@@ -38,6 +38,8 @@ def create_app() -> Flask:
 
     return app
 
+# Para producción (Gunicorn en Render)
+app = create_app()
+
 if __name__ == "__main__":
-    app = create_app()
     app.run(debug=True, host="0.0.0.0", port=int(os.getenv("PORT", "4010")))

@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 
+const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:4010';
+
 function App() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:4010/api/items')
+    fetch(`${API_BASE}/api/items`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Error al cargar los datos');
